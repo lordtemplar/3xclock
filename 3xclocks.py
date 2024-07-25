@@ -47,7 +47,7 @@ while True:
     current_real_time = datetime.now().strftime("%H:%M:%S")
     current_accel_time = get_accelerated_time(st.session_state.real_start, st.session_state.accel_start, st.session_state.acceleration).strftime("%H:%M:%S")
     
-    real_time_display.markdown(f"<div style='background-color: lightgreen; padding: 10px; font-size: 100px; text-align: center;'>{current_real_time}</div>", unsafe_allow_html=True)
-    accel_time_display.markdown(f"<div style='background-color: lightgreen; padding: 10px; font-size: 100px; text-align: center;'>{current_accel_time}</div>", unsafe_allow_html=True)
+    real_time_display.markdown(f"<div style='background-color: lightgreen; padding: 10px; font-size: 80px; text-align: center;'>{current_real_time}</div>", unsafe_allow_html=True)
+    accel_time_display.markdown(f"<div style='background-color: lightorange; padding: 10px; font-size: 80px; text-align: center;'>{current_accel_time}</div>", unsafe_allow_html=True)
     
     time.sleep(1)
