@@ -14,12 +14,6 @@ accel_start_time = st.time_input("Select accelerated clock start time", datetime
 # Acceleration adjustment
 acceleration = st.slider("Select acceleration factor", 1, 10, 3)
 
-# Apply changes button
-if st.button("Apply Changes"):
-    st.session_state.normal_start = datetime.combine(datetime.today(), normal_start_time)
-    st.session_state.accel_start = datetime.combine(datetime.today(), accel_start_time)
-    st.session_state.acceleration = acceleration
-
 # Initialize state variables if not set
 if 'normal_start' not in st.session_state:
     st.session_state.normal_start = datetime.combine(datetime.today(), normal_start_time)
@@ -52,6 +46,6 @@ while True:
     current_accel_time = get_accelerated_time(st.session_state.normal_start, st.session_state.accel_start, st.session_state.acceleration).strftime("%H:%M:%S")
     
     normal_time_display.markdown(f"<div style='background-color: lightblue; padding: 10px; font-size: 80px; text-align: center;'>{current_normal_time}</div>", unsafe_allow_html=True)
-    accel_time_display.markdown(f"<div style='background-color: lightorange; padding: 10px; font-size: 80px; text-align: center;'>{current_accel_time}</div>", unsafe_allow_html=True)
+    accel_time_display.markdown(f"<div style='background-color: orange; padding: 10px; font-size: 80px; text-align: center;'>{current_accel_time}</div>", unsafe_allow_html=True)
     
     time.sleep(1)
