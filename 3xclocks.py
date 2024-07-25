@@ -40,7 +40,7 @@ with real_col:
     real_time_display = st.empty()
 
 with accel_col:
-    st.write(f"**JTLS Time ({st.session_state.acceleration}x):**")
+    st.write(f"**Accelerated Time ({st.session_state.acceleration}x):**")
     accel_time_display = st.empty()
 
 # Update the clocks every second
