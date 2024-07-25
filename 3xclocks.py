@@ -3,10 +3,13 @@ import time
 from datetime import datetime, timedelta
 
 # Set up the layout
-st.title("Real-World Clock vs. Accelerated 3x Clock")
+st.title("Real-World Clock vs. Accelerated Clock")
 
 # Input for start time
 start_time = st.time_input("Select start time", datetime.now().time())
+
+# Acceleration adjustment
+acceleration = st.slider("Select acceleration factor", 1, 10, 3)
 
 # Initialize state variables
 if 'real_start' not in st.session_state:
@@ -29,15 +32,15 @@ with real_col:
     real_time_display = st.empty()
 
 with accel_col:
-    st.write("**Accelerated 3x Time:**")
+    st.write("**Accelerated Time ({}x):**".format(acceleration))
     accel_time_display = st.empty()
 
 # Update the clocks every second
 while True:
     current_real_time = datetime.now().strftime("%H:%M:%S")
-    current_accel_time = get_accelerated_time(st.session_state.real_start, st.session_state.accel_start).strftime("%H:%M:%S")
+    current_accel_time = get_accelerated_time(st.session_state.real_start, st.session_state.accel_start, acceleration).strftime("%H:%M:%S")
     
-    real_time_display.text(current_real_time)
-    accel_time_display.text(current_accel_time)
+    real_time_display.markdown(f"<div style='background-color: lightgreen; padding: 10px; font-size: 20px;'>{current_real_time}</div>", unsafe_allow_html=True)
+    accel_time_display.markdown(f"<div style='background-color: lightgreen; padding: 10px; font-size: 20px;'>{current_accel_time}</div>", unsafe_allow_html=True)
     
     time.sleep(1)
