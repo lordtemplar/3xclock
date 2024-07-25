@@ -46,7 +46,7 @@ while True:
     else:
         current_accel_time = st.session_state.accel_start.strftime("%H:%M:%S")
     
-    normal_time_display.markdown(f"<div style='background-color: lightblue; padding: 10px; font-size: 160px; text-align: center;'>{current_normal_time}</div>", unsafe_allow_html=True)
-    accel_time_display.markdown(f"<div style='background-color: orange; padding: 10px; font-size: 160px; text-align: center;'>{current_accel_time}</div>", unsafe_allow_html=True)
+    normal_time_display.markdown(f"<div style='background-color: lightblue; padding: 10px; font-size: 100px; text-align: center;'>{current_normal_time}</div>", unsafe_allow_html=True)
+    accel_time_display.markdown(f"<div style='background-color: orange; padding: 10px; font-size: 100px; text-align: center;'>{current_accel_time}</div>", unsafe_allow_html=True)
     
     time.sleep(1)
