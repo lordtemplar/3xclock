@@ -3,6 +3,9 @@ import time
 from datetime import datetime, timedelta
 import pytz
 
+# Set the page configuration
+st.set_page_config(page_title="JTLS Clock 3x", layout="wide")
+
 # Initialize the Bangkok time zone
 bangkok_tz = pytz.timezone("Asia/Bangkok")
 
