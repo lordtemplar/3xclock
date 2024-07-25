@@ -3,21 +3,21 @@ import time
 from datetime import datetime, timedelta
 import pytz
 
-# Initialize the Bangkok time zone
-bangkok_tz = pytz.timezone("Asia/Bangkok")
+# Initialize the Canada Eastern time zone
+canada_tz = pytz.timezone("Canada/Eastern")
 
 # Set fixed acceleration factor
 acceleration = 3
 
 # Initialize state variables if not set
 if 'normal_start' not in st.session_state:
-    st.session_state.normal_start = datetime.now(bangkok_tz)
+    st.session_state.normal_start = datetime.now(canada_tz)
 if 'accel_start' not in st.session_state:
-    st.session_state.accel_start = datetime.now(bangkok_tz).replace(hour=7, minute=0, second=0, microsecond=0)
+    st.session_state.accel_start = datetime.now(canada_tz).replace(hour=7, minute=0, second=0, microsecond=0)
 
 # Function to calculate the accelerated time
 def get_accelerated_time(real_start, accel_start, multiplier=3):
-    elapsed_real = datetime.now(bangkok_tz) - real_start
+    elapsed_real = datetime.now(canada_tz) - real_start
     elapsed_accel = elapsed_real * multiplier
     return accel_start + elapsed_accel
 
@@ -26,7 +26,7 @@ st.write("### JTLS Clocks:")
 normal_col, accel_col = st.columns(2)
 
 with normal_col:
-    st.write("**Thailand Clock:**")
+    st.write("**Canada Clock:**")
     normal_time_display = st.empty()
 
 with accel_col:
@@ -35,7 +35,7 @@ with accel_col:
 
 # Update the clocks every second
 while True:
-    current_time = datetime.now(bangkok_tz)
+    current_time = datetime.now(canada_tz)
     current_normal_time = current_time.strftime("%H:%M:%S")
     
     if current_time.hour >= 8 and current_time.hour < 16:
@@ -43,7 +43,7 @@ while True:
     else:
         current_accel_time = st.session_state.accel_start.strftime("%H:%M:%S")
     
-    normal_time_display.markdown(f"<div style='background-color: lightblue; padding: 10px; font-size: 60px; text-align: center;'>{current_normal_time}</div>", unsafe_allow_html=True)
-    accel_time_display.markdown(f"<div style='background-color: orange; padding: 10px; font-size: 60px; text-align: center;'>{current_accel_time}</div>", unsafe_allow_html=True)
+    normal_time_display.markdown(f"<div style='background-color: lightblue; padding: 10px; font-size: 120px; text-align: center;'>{current_normal_time}</div>", unsafe_allow_html=True)
+    accel_time_display.markdown(f"<div style='background-color: orange; padding: 10px; font-size: 120px; text-align: center;'>{current_accel_time}</div>", unsafe_allow_html=True)
     
     time.sleep(1)
