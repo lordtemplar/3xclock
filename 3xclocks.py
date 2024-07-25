@@ -5,22 +5,13 @@ from datetime import datetime, timedelta
 # Set up the layout
 st.title("Normal Clock vs. Accelerated Clock")
 
-# Input for normal clock start time
-normal_start_time = st.time_input("Select normal clock start time", datetime.now().time())
-
-# Input for accelerated clock start time
-accel_start_time = st.time_input("Select accelerated clock start time", datetime.now().time())
-
-# Acceleration adjustment
-acceleration = st.slider("Select acceleration factor", 1, 10, 3)
-
 # Initialize state variables if not set
 if 'normal_start' not in st.session_state:
-    st.session_state.normal_start = datetime.combine(datetime.today(), normal_start_time)
+    st.session_state.normal_start = datetime.now()
 if 'accel_start' not in st.session_state:
-    st.session_state.accel_start = datetime.combine(datetime.today(), accel_start_time)
+    st.session_state.accel_start = datetime.now()
 if 'acceleration' not in st.session_state:
-    st.session_state.acceleration = acceleration
+    st.session_state.acceleration = 3
 
 # Function to calculate the accelerated time
 def get_accelerated_time(real_start, accel_start, multiplier=3):
