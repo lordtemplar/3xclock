@@ -26,11 +26,11 @@ st.write("### JTLS Clocks:")
 normal_col, accel_col = st.columns(2)
 
 with normal_col:
-    st.write("**Normal Clock:**")
+    st.write("**Thailand Clock:**")
     normal_time_display = st.empty()
 
 with accel_col:
-    st.write(f"**Accelerated Time ({acceleration}x):**")
+    st.write(f"**JTLS Clock ({acceleration}x):**")
     accel_time_display = st.empty()
 
 # Update the clocks every second
@@ -43,7 +43,7 @@ while True:
     else:
         current_accel_time = st.session_state.accel_start.strftime("%H:%M:%S")
     
-    normal_time_display.markdown(f"<div style='background-color: lightblue; padding: 10px; font-size: 80px; text-align: center;'>{current_normal_time}</div>", unsafe_allow_html=True)
-    accel_time_display.markdown(f"<div style='background-color: orange; padding: 10px; font-size: 80px; text-align: center;'>{current_accel_time}</div>", unsafe_allow_html=True)
+    normal_time_display.markdown(f"<div style='background-color: lightblue; padding: 10px; font-size: 60px; text-align: center;'>{current_normal_time}</div>", unsafe_allow_html=True)
+    accel_time_display.markdown(f"<div style='background-color: orange; padding: 10px; font-size: 60px; text-align: center;'>{current_accel_time}</div>", unsafe_allow_html=True)
     
     time.sleep(1)
